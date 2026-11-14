@@ -46,3 +46,11 @@ yarn-error.log*
 
 !.env.example
 !.dev.vars.example
+
+# Python environments, model downloads and generated vector indexes
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+/backend/.cache/
+/backend/.index/

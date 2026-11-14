@@ -1,52 +1,40 @@
 # Delivery roadmap
 
-This file separates the current foundation from the complete hackathon project. An unchecked item is not delivered.
+Unchecked items remain outstanding. The repository now includes the connected Python RAG implementation; it is not yet publicly deployed.
 
-## Milestone 1 — Web foundation
+## Delivered — web app and Python RAG
 
-- [x] English chat UI, source library and assistance links.
-- [x] Reviewed source catalog with explicit coverage limits.
-- [x] Source-guide mode that runs without paid services.
-- [x] Optional Groq selection code, with mocked integration tests.
+- [x] English chat UI, source library, assistance links, browser read-aloud and downloadable notes.
+- [x] Shared reviewed source notes with official URLs, review dates and coverage limits.
+- [x] Python FastAPI service with documented request/response contracts.
+- [x] Reproducible note ingestion, cleaning, chunking and provenance.
+- [x] Real BGE CPU embeddings and a local cosine vector index, with a separate TF-IDF option.
+- [x] Query retrieval, limited follow-up handling and an insufficient-coverage path.
+- [x] Optional Groq generation using retrieved context; validated reference IDs and exact evidence quotes.
+- [x] Connected React interface with visible retrieval/generation/fallback modes and evidence display.
+- [x] Emergency signposting and explicit fallback when Python or the provider is unavailable.
+- [x] Python/web tests, real-model tests, GitHub CI, a small authored evaluation set and measured results.
 - [x] Beginner setup instructions and VS Code tasks.
-- [ ] Verify Groq using the owner’s free account.
-- [ ] Complete mobile, keyboard and screen-reader review.
 
-## Milestone 2 — Python RAG
+## Next — validate and deploy
 
-- [ ] Python FastAPI service with documented API contracts and dependencies.
-- [ ] Reproducible ingestion of approved official sources with provenance, review date and jurisdiction metadata.
-- [ ] Document cleaning and chunking, preserving section/page references.
-- [ ] Embeddings and a vector index with reproducible build instructions.
-- [ ] Retrieval filters for jurisdiction and source validity, with an explicit insufficient-evidence path.
-- [ ] LLM answers grounded in retrieved passages, checked citations and supported next steps.
-- [ ] Emergency handling and useful fallback when providers are unavailable.
-- [ ] Connect the React app to the Python API; keep a clearly labelled no-key guide mode.
-
-Planned flow: approved sources → ingestion → chunks + metadata → embeddings/index → query retrieval → supported LLM response → citations in the web app.
-
-The final vector store and embedding provider must fit the verified free-tier limits. Do not describe the present keyword/source-selection implementation as vector RAG.
-
-## Milestone 3 — Evaluation and deployment
-
-- [ ] Versioned evaluation questions covering supported topics, ambiguity, out-of-scope questions and adversarial prompts.
-- [ ] Report retrieval recall, citation support, answer correctness, latency and fallback behavior; distinguish measured results from targets.
-- [ ] Independent review of legal content where available, and documented limits where unavailable.
-- [ ] Deploy the frontend and Python backend with secrets held server-side.
-- [ ] Configure allowed frontend origins, request limits, health checks and provider budgets.
-- [ ] Verify a fresh GitHub clone can install, test and run using documented commands.
-- [ ] Test the public demo from a separate browser session, including a backend cold start and provider failure.
-- [ ] Add the verified demo URL, demo video, architecture explanation and presentation.
+- [ ] Verify real Groq generation with the owner’s free-tier account.
+- [ ] Expand and independently review the corpus beyond 16 introductory notes.
+- [ ] Add a larger evaluation set that was not used to tune the pipeline.
+- [ ] Measure real LLM correctness, citation entailment, latency and provider-limit behavior.
+- [ ] Complete keyboard, screen-reader and mobile usability review.
+- [ ] Choose and verify a free Python host against actual memory/download/cold-start limits.
+- [ ] Deploy the web app and Python backend with separate server-side secrets and exact allowed origins.
+- [ ] Verify a fresh public demo session, cold start, API limits and provider/backend failures.
+- [ ] Add a verified public URL, demo video, pitch and user feedback.
 
 ## Judging alignment
 
-The [event page](https://hackindia.org/2026/ai-for-lawyers-hackathon) listed the following weights when checked on 14 November 2026. Recheck the final rubric before submission.
+The [event page](https://hackindia.org/2026/ai-for-lawyers-hackathon) listed these weights when checked on 14 November 2026. Recheck the final rubric before submission.
 
-| Criterion | Weight | Evidence to prepare |
+| Criterion | Weight | Evidence |
 | --- | --- | --- |
-| Technical execution | 40% | Real Python RAG, reproducible pipeline, evaluation results, working deployment |
-| Innovation | 30% | Evidence-backed next steps, transparent source limits and a focused access-to-justice workflow |
-| User experience | 20% | Plain language, responsive design, accessible interactions and useful follow-ups |
-| Impact | 10% | Clear target users, no-cost access within quotas, links to appropriate assistance and feedback from users |
-
-A generic chat interface alone does not satisfy these goals. The finished demo should show a useful answer, its supporting passages, an honest refusal when evidence is insufficient and recovery from an unavailable provider.
+| Technical execution | 40% | Python RAG, reproducible indexing, real embeddings, tests and honest evaluation; deployment remains pending |
+| Innovation | 30% | Visible evidence and useful next steps for a focused access-to-justice workflow |
+| User experience | 20% | Plain language, responsive design and clear coverage/fallback labels; broader accessibility testing remains pending |
+| Impact | 10% | No-cost local retrieval and optional free-tier generation, appropriate assistance links; user validation remains pending |

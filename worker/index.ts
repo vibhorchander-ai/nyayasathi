@@ -6,7 +6,7 @@ import { handleAPI } from "../lib/legal-engine.mjs";
 const worker = {
   fetch(request: Request, env: Cloudflare.Env, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
     if (new URL(request.url).pathname.startsWith('/api/')) {
-      return handleAPI(request, env as Cloudflare.Env & { GROQ_API_KEY?: string; GROQ_MODEL?: string });
+      return handleAPI(request, env as Cloudflare.Env & { NYAYA_BACKEND_URL?: string; NYAYA_BACKEND_TOKEN?: string });
     }
     let binding = ctx.props?.CONNECTORS;
     // Local preview emulates the same request-scoped capability. This branch and

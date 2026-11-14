@@ -66,7 +66,7 @@ test('API validates input, origin, body size and content type', async () => {
 });
 test('status reveals availability but never secrets', async () => {
   const result = await handleAPI(new Request('https://example.com/api/status'), { GROQ_API_KEY: 'secret-do-not-expose' });
-  const body = await result.text(); assert.ok(body.includes('true')); assert.ok(!body.includes('secret-do-not-expose'));
+  const body = await result.text(); assert.equal(JSON.parse(body).aiAvailable, false); assert.ok(!body.includes('secret-do-not-expose'));
 });
 test('per-isolate throttle expires and blocks repeated traffic', () => {
   for (let i = 0; i < 12; i++) assert.equal(permitRequest('throttle-case', 1000), true);

@@ -2,104 +2,133 @@
 
 **Know your rights. Find your next step.**
 
-An English-first legal information guide for people in India, built for [HackIndia’s AI for Lawyers hackathon, PS-02: Access to Justice](https://hackindia.org/2026/ai-for-lawyers-hackathon).
+An English-first legal information assistant for India, built for [HackIndia PS-02: Access to Justice](https://hackindia.org/2026/ai-for-lawyers-hackathon).
 
-> **Status: initial working foundation.** The web app runs locally without an API key. It currently uses reviewed source notes and keyword matching, with optional Groq-assisted selection of those notes. The Python backend, vector retrieval, full RAG pipeline and public deployment are planned, not implemented. See [the roadmap](docs/ROADMAP.md).
+**Status:** the Python RAG backend is connected to the React app. Local semantic retrieval works without an account or API key. Optional Groq generation is implemented and tested with mocked responses; a real Groq key is still needed to verify live generation. There is no public deployment yet.
 
-## What works today
+## What you can demo
 
-- Responsive chat interface with suggested questions and limited follow-up handling.
-- Five covered subjects: consumer complaints, cyber fraud reporting, free legal aid, assistance for women and central RTI requests; plus emergency signposting.
-- Official source links, dated source notes, coverage limits and practical next steps.
-- Searchable source library, assistance contacts and downloadable conversation notes.
-- Browser read-aloud where supported. Voice availability depends on the browser and operating system.
-- Optional AI source selection with user opt-in, output validation and a source-guide fallback.
-- Input validation, request-size limits, basic identifier redaction before AI processing and best-effort request throttling.
+- A responsive conversational interface, source library, assistance contacts and downloadable notes.
+- Python ingestion of 16 reviewed source notes, stable chunks with provenance, local BGE embeddings and cosine vector retrieval.
+- Optional retrieval-augmented LLM explanations with validated chunk references and exact quotes from the retrieved notes.
+- A “Read the retrieved evidence” panel showing the notes and their official source links.
+- Explicit labels for AI explanations, retrieved notes, the built-in source guide and coverage limits.
+- Out-of-scope handling, emergency signposting and fallback when the Python service or LLM is unavailable.
 
-This is general information, not legal advice or a substitute for a qualified lawyer. Source notes were checked on 14 November 2026; they are not automatically updated. This prototype has not undergone legal expert validation.
+The collection covers introductory consumer complaints, cyber fraud reporting, legal aid, assistance for women and central RTI requests. These are **reviewed paraphrases**, not a collection of full statutes, judgments or verbatim government documents. Source review date: 14 November 2026. General legal information only; no legal expert validation has been completed.
 
-## Run it in VS Code
+## Step-by-step setup
 
-You need [Git](https://git-scm.com/downloads), [VS Code](https://code.visualstudio.com/) and [Node.js](https://nodejs.org/) version 22.13 or later. Use Node 24 LTS for a consistent setup. Python is not needed for this initial version.
+The full guide, including Windows commands and troubleshooting, is in **[docs/SETUP.md](docs/SETUP.md)**. Run all commands from the repository root.
 
-1. In VS Code, choose **Terminal → New Terminal**.
-2. Clone the working branch and enter its folder:
+1. Install free [Python 3.12](https://www.python.org/downloads/), [Node.js 24 LTS](https://nodejs.org/), [Git](https://git-scm.com/downloads) and [VS Code](https://code.visualstudio.com/).
+2. Clone the branch (skip if you already have this checkout):
 
    ```sh
    git clone --branch feature/initial-setup https://github.com/vibhorchander-ai/nyayasathi.git
    cd nyayasathi
    ```
 
-3. Install the pinned package manager once, then install project dependencies:
+3. Create and activate an isolated Python environment:
+
+   ```sh
+   python3.12 -m venv .venv
+   source .venv/bin/activate
+   python -m pip install -r backend/requirements-semantic.txt
+   ```
+
+4. Copy the example configuration **once**. Keep existing configuration if these files already exist:
+
+   ```sh
+   cp backend/.env.example backend/.env
+   cp .dev.vars.example .dev.vars
+   ```
+
+   Leave `GROQ_API_KEY` blank initially. The default web configuration connects to Python at `http://127.0.0.1:8000`.
+
+5. Build the local vector index, then start Python:
+
+   ```sh
+   python -m backend.ingest
+   python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000 --no-access-log
+   ```
+
+   The first ingestion downloads a small public embedding model. No Hugging Face account, GPU or paid endpoint is required. Subsequent runs reuse the model cache. Check [backend health](http://127.0.0.1:8000/health) or [API docs](http://127.0.0.1:8000/docs).
+
+6. Open a **second terminal** in the same project folder, then start the web app:
 
    ```sh
    npm install --global pnpm@11.25.0
    pnpm install --frozen-lockfile
-   ```
-
-4. Choose **File → Open Folder** and open `nyayasathi` if it is not already open.
-5. Start the app from the project terminal:
-
-   ```sh
    pnpm dev
    ```
 
-6. Open [localhost:5173](http://localhost:5173). Keep the terminal running. Press **Ctrl+C** in that terminal to stop the server.
+7. Open **[localhost:5173](http://localhost:5173)**. The header should show **Source retrieval**. Ask “How do I track my consumer grievance?” and expand **Read the retrieved evidence**. Keep both terminals running; Ctrl+C stops each server.
 
-You can also choose **Terminal → Run Task → NyayaSathi: dev**. Tasks for testing, checking types and building are included. If `node` or `pnpm` is not found after installation, restart VS Code and check `node --version` and `pnpm --version` in a new terminal.
+VS Code tasks for the frontend, backend, ingestion and tests are included under **Terminal → Run Task**. They use the project’s `.venv`; create it before running the Python tasks.
 
-## Optional Groq setup
+## Enable optional LLM explanations for free
 
-The source-guide mode works without an account or API key. To try AI-assisted matching:
+1. Create an account at the [Groq Console](https://console.groq.com/) and remain on the **Free tier**. Do not add billing or upgrade to a paid tier. Groq applies [free-tier rate limits](https://console.groq.com/docs/rate-limits).
+2. Create an API key and put it in `backend/.env` as `GROQ_API_KEY=your-key`.
+3. Restart Python. Reload the browser and enable **Use AI to explain the retrieved information**.
 
-1. Create your own account at the [Groq Console](https://console.groq.com/). Use its free plan; check the account’s current limits before enabling anything billable.
-2. Create an API key in the console. Keep it private.
-3. In VS Code, copy `.dev.vars.example` to a new file named `.dev.vars` in the project root.
-4. Set `GROQ_API_KEY` to your key in that local file. Leave `GROQ_MODEL` as provided unless you have verified another model supports the requested structured output.
-5. Restart `pnpm dev`, then enable AI-assisted matching in the interface.
+The default model is `openai/gpt-oss-20b`. Groq provides [structured outputs](https://console.groq.com/docs/structured-outputs); account/model availability can change. The application does not create or upgrade service accounts. Its daily request cap is a best-effort, per-process demo limit, not a billing guarantee. See [Groq billing information](https://console.groq.com/docs/billing-faqs).
 
-Never paste keys into GitHub, chat, screenshots or frontend code. `.dev.vars` is ignored by Git. A missing key, exhausted quota, timeout or invalid AI response uses the source guide instead. Real Groq requests have not yet been tested with an account; automated tests use mocked provider responses.
+Never commit `.env`/`.dev.vars`, paste keys into chat or put keys in frontend variables. Generation is opt-in. If there is no key, quota is exhausted, the request times out or citation validation fails, the UI displays retrieved notes instead.
 
-## Check the project
+## Architecture
+
+```text
+Shared reviewed corpus (data/knowledge.json)
+    → Python cleaning and chunking with source metadata
+    → BGE-small-en-v1.5 embeddings on CPU → local NumPy vector index
+
+React chat → same-origin Worker API → Python FastAPI
+    → scope checks → hybrid semantic + lexical retrieval
+    → optional Groq generation using retrieved notes only
+    → validate citations and evidence quotes → response + visible evidence
+```
+
+The default embedding model is [BAAI/bge-small-en-v1.5](https://huggingface.co/BAAI/bge-small-en-v1.5), run through [FastEmbed](https://qdrant.github.io/fastembed/). It produces 384-dimensional vectors. A separate, lighter TF-IDF mode is available; it performs lexical retrieval and must not be presented as neural semantic search. No paid vector database or embedding API is used.
+
+| File or directory | Responsibility |
+| --- | --- |
+| `backend/main.py` | FastAPI endpoints, input limits, origin/token checks and request throttling |
+| `backend/corpus.py`, `backend/ingest.py` | Validate notes, clean text and build the index |
+| `backend/retrieval.py` | Embeddings, cached index and cosine ranking |
+| `backend/rag.py`, `backend/llm.py` | Coverage rules, prompt construction, generation and citation validation |
+| `data/knowledge.json` | Shared source notes, metadata and topic guidance |
+| `lib/backend-proxy.mjs` | Server-side proxy and explicit fallback |
+| `app/page.tsx` | Chat interface and retrieved evidence display |
+| `backend/evaluate.py` | Reproducible retrieval/routing evaluation |
+
+Read [the architecture and API contract](docs/ARCHITECTURE.md), [measured evaluation results](docs/EVALUATION.md) and [the remaining roadmap](docs/ROADMAP.md).
+
+## Verification
+
+With the Python environment activated:
 
 ```sh
+python -m unittest discover -s backend/tests -v
+NYAYA_TEST_SEMANTIC=1 python -m unittest discover -s backend/tests -v
+python -m backend.evaluate --engine bge
 pnpm test
 pnpm build
 pnpm typecheck
 pnpm lint
 ```
 
-The tests exercise topic routing, follow-ups, source references, provider fallback, consent, basic redaction, API validation and throttling. They are software checks, not proof of legal accuracy or retrieval quality. GitHub Actions runs these checks on pushes and pull requests.
+The first command skips the two real-model tests; the second includes them. Windows equivalents are in the setup guide. CI installs the semantic dependencies and runs all Python and web checks. Generation tests use a mocked provider, so they incur no API charges. The evaluation is a small authored regression set, not an independent legal-accuracy benchmark.
 
-## How this version works
+## Privacy and limits
 
-```text
-React chat → Worker API → reviewed source catalog → answer + citations
-                           ↑
-              optional Groq source selection
-```
+The application has no chat database or browser chat storage. The web and Python servers receive questions. Basic email, phone and ID patterns are removed before LLM processing, but this is not comprehensive anonymisation. AI-enabled requests send the redacted question and retrieved notes to Groq. Browser read-aloud and operational provider processing depend on their respective policies. Downloaded notes include your questions.
 
-The default mode matches words and phrases to topics. In AI mode, Groq selects IDs from the reviewed catalog; the server validates them and displays the stored text. It does not generate new legal claims. There are no embeddings, document ingestion or vector searches in this version.
+Valid chunk IDs and matching quotes do not prove that a generated claim logically follows from its citation. The source collection is small, does not update automatically and excludes most Indian law. Topic filters, similarity thresholds and emergency matching can miss unfamiliar wording. Practical next steps are curated topic guidance. Further evaluation and legal review remain necessary before broader use.
 
-| Location | Purpose |
-| --- | --- |
-| `app/page.tsx` | Chat, sources and assistance interface |
-| `app/globals.css` | Responsive styles |
-| `lib/knowledge.mjs` | Source metadata and reviewed guide notes |
-| `lib/legal-engine.mjs` | Matching, provider selection, validation and API handlers |
-| `worker/index.ts` | Cloudflare Worker entry point |
-| `tests/legal-engine.test.mjs` | Automated behavior checks |
-| `.vscode/tasks.json` | VS Code run tasks |
-| `docs/ROADMAP.md` | Python RAG plan and completion criteria |
+## Deployment and license
 
-The web foundation uses React, TypeScript, Vinext and Cloudflare Workers. Starter components and build utilities are included; database and connector scaffolding are not used by the legal guide. The application currently stores no conversation database. Chats live in page memory, and downloaded notes contain the user’s questions. The server receives the submitted question; when AI is enabled, a version with basic email/phone/ID pattern redaction is also sent to Groq. This does not guarantee anonymisation. Hosting and AI providers may retain operational data under their own policies.
+This milestone runs locally and adds no paid services. Public deployment is the next milestone. The Python process cannot run inside the Cloudflare Worker; it needs a separate Python host. See deployment considerations in the setup guide before exposing a backend with an API key.
 
-## Deployment status
-
-There is no verified public deployment yet. The proposed full-project setup is a Cloudflare frontend and a Python FastAPI backend on Render, using free-tier services subject to their limits. The RAG storage and embedding choices must be validated against the selected free accounts before deployment. Free services may sleep or impose quotas.
-
-This repository includes a Worker build and `deploy:cloudflare` command, but that command is not an end-to-end deployment of the planned Python system. Do not treat a successful local build as evidence of a live site. Deployment instructions and the public demo URL will be added after verification.
-
-## License and attribution
-
-Project code is under the [MIT license](LICENSE), as selected in the original repository. Third-party packages and vendored files retain their own licenses. The MIT license does not relicense linked government documents, model weights or service APIs. This project started from the Sites React/Vinext scaffold; third-party notices are retained in `vendor/` and `scripts/vite/`.
+Project code retains the [MIT license](LICENSE). Dependency/model licenses and official source terms remain separate. The web foundation uses the Sites React/Vinext scaffold; its third-party notices remain in `vendor/` and `scripts/vite/`.
