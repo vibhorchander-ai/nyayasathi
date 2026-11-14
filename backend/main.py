@@ -2,6 +2,8 @@
 from collections import OrderedDict
 from contextlib import asynccontextmanager
 import hmac
+import os
+import re
 import time
 
 import httpx
@@ -113,7 +115,11 @@ def create_app(settings=None, retriever=None, client=None):
 
     @app.get("/health")
     async def health():
-        return {"status": "ok", "service": "nyayasathi-python-rag"}
+        # Public commit identity lets CD distinguish a new release from the old
+        # healthy process while Render is still building. Never expose settings.
+        revision = os.getenv("RENDER_GIT_COMMIT", "")
+        return {"status": "ok", "service": "nyayasathi-python-rag",
+                "revision": revision if re.fullmatch(r"[a-f0-9]{40}", revision) else "local"}
 
     @app.get("/api/status")
     async def status():

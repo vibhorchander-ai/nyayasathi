@@ -85,7 +85,7 @@ Create an account at [Groq Console](https://console.groq.com/) and keep the Free
 
 Enable **Use AI to explain the retrieved information**. A successful generated response shows **AI explanation + evidence**. Without consent, all retrieval still runs locally and no LLM call is made. The default model is `openai/gpt-oss-20b`; invalid or unavailable model responses fall back visibly to retrieved notes.
 
-No live Groq key was available during development. Code and failure handling were tested using mocked responses; you still need to verify a real free-tier call from your account. Free quotas can change. Do not upgrade or add billing to follow this zero-budget setup.
+The local live Groq flow was verified on 14 November 2026. Automated tests use mocked responses and do not consume provider quota. A fresh clone or hosted deployment still needs its own private key configuration and a real-call check. Free quotas can change. Do not upgrade or add billing to follow this zero-budget setup.
 
 ## 8. Run the checks
 
@@ -131,8 +131,10 @@ Edit `data/knowledge.json`. Keep stable fact/source IDs, official HTTPS source U
 
 The pipeline does not scrape arbitrary websites or accept private document uploads. Chunking applies to reviewed notes in this file, and longer notes are split into overlapping word windows. A cache fingerprint detects changed corpus bytes.
 
-## Before later public deployment
+## Public deployment
+
+Follow [the complete Cloudflare + Render CI/CD guide](DEPLOYMENT.md). The repository includes a Free-plan Render Blueprint and an opt-in GitHub Actions deployment job. Accounts and secrets must be configured before it can publish.
 
 The frontend Worker must use the Python service’s HTTPS root URL in `NYAYA_BACKEND_URL`. Set a random `NYAYA_API_TOKEN` in the backend and the same value as `NYAYA_BACKEND_TOKEN` in the Worker’s server-side secrets. Keep `GROQ_API_KEY` only in Python. Restrict origins to the deployed frontend and use one backend worker for the documented demo limits.
 
-The local NumPy index can be rebuilt from the checked-in corpus; no paid database is required. Model downloads, memory, cold starts, persistent cache availability and free hosting quotas still need to be tested on the chosen host. Do not assume a local semantic model fits every free hosting instance. The lighter TF-IDF configuration is an explicit alternative, with its own evaluation results. Deployment and live-provider verification remain separate milestones.
+The local NumPy index can be rebuilt from the checked-in corpus; no paid database is required. CI checks embedding-process memory, but cold starts, CPU limits and free hosting quotas still need to be verified on the actual host. The lighter TF-IDF configuration is an explicit alternative with different evaluation results; this deployment pipeline deliberately requires BGE and does not silently switch models.

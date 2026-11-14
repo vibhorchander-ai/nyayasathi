@@ -1,0 +1,30 @@
+# Import this Blueprint from feature/initial-setup. Keep the Free compute plan.
+services:
+  - type: web
+    name: nyayasathi-api
+    runtime: python
+    plan: free
+    branch: feature/initial-setup
+    autoDeployTrigger: "off"
+    buildCommand: python -m pip install -r backend/requirements-semantic.txt && python -m backend.ingest
+    startCommand: python -m uvicorn backend.main:app --host 0.0.0.0 --port $PORT --workers 1 --no-access-log --no-proxy-headers
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.14
+      - key: NYAYA_EMBEDDINGS
+        value: bge
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-20b
+      - key: GROQ_API_KEY
+        sync: false
+      - key: NYAYA_API_TOKEN
+        generateValue: true
+      - key: NYAYA_ALLOWED_ORIGINS
+        sync: false
+      - key: NYAYA_DAILY_AI_LIMIT
+        value: "100"
+      - key: HF_HUB_DISABLE_TELEMETRY
+        value: "1"
+      - key: TOKENIZERS_PARALLELISM
+        value: "false"

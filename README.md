@@ -4,7 +4,7 @@
 
 An English-first legal information assistant for India, built for [HackIndia PS-02: Access to Justice](https://hackindia.org/2026/ai-for-lawyers-hackathon).
 
-**Status:** the Python RAG backend is connected to the React app. Local semantic retrieval works without an account or API key. Optional Groq generation is implemented and tested with mocked responses; a real Groq key is still needed to verify live generation. There is no public deployment yet.
+**Status:** the Python RAG backend is connected to the React app. Local semantic retrieval works without an account or API key. Live Groq generation with retrieved evidence was verified locally on 14 November 2026. Free-hosting configuration and an opt-in CI/CD pipeline are included; a public deployment still requires account/secret setup and verification.
 
 ## What you can demo
 
@@ -129,6 +129,6 @@ Valid chunk IDs and matching quotes do not prove that a generated claim logicall
 
 ## Deployment and license
 
-This milestone runs locally and adds no paid services. Public deployment is the next milestone. The Python process cannot run inside the Cloudflare Worker; it needs a separate Python host. See deployment considerations in the setup guide before exposing a backend with an API key.
+Follow **[the beginner deployment guide](docs/DEPLOYMENT.md)** for Cloudflare Workers Free + Render Free. The GitHub Actions deployment job waits for web/Python checks, deploys the exact backend commit, then deploys and checks the public web app. It stays disabled until `DEPLOY_ENABLED=true` and hosting secrets are configured. The Python embedding process runs separately from the Cloudflare Worker.
 
 Project code retains the [MIT license](LICENSE). Dependency/model licenses and official source terms remain separate. The web foundation uses the Sites React/Vinext scaffold; its third-party notices remain in `vendor/` and `scripts/vite/`.
