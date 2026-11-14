@@ -4,18 +4,20 @@
 
 An English-first legal information assistant for India, built for [HackIndia PS-02: Access to Justice](https://hackindia.org/2026/ai-for-lawyers-hackathon).
 
-**Status:** the Python RAG backend is connected to the React app. Local semantic retrieval works without an account or API key. Live Groq generation with retrieved evidence was verified locally on 14 November 2026. Free-hosting configuration and an opt-in CI/CD pipeline are included; a public deployment still requires account/secret setup and verification.
+**Status:** the Python RAG backend is connected to the React app. Local semantic retrieval works without an account or API key. Live Groq generation with retrieved evidence was verified locally on 14 November 2026. The public demo runs on Cloudflare Workers Free + Render Free, with GitHub Actions CI/CD enabled for `feature/initial-setup`.
+
+**Live demo:** https://nyayasathi.vibhorapiengineer.workers.dev/
 
 ## What you can demo
 
 - A responsive conversational interface, source library, assistance contacts and downloadable notes.
-- Python ingestion of 16 reviewed source notes, stable chunks with provenance, local BGE embeddings and cosine vector retrieval.
+- Python ingestion of 23 reviewed source notes, stable chunks with provenance, local BGE embeddings and cosine vector retrieval.
 - Optional retrieval-augmented LLM explanations with validated chunk references and exact quotes from the retrieved notes.
 - A “Read the retrieved evidence” panel showing the notes and their official source links.
 - Explicit labels for AI explanations, retrieved notes, the built-in source guide and coverage limits.
 - Out-of-scope handling, emergency signposting and fallback when the Python service or LLM is unavailable.
 
-The collection covers introductory consumer complaints, cyber fraud reporting, legal aid, assistance for women and central RTI requests. These are **reviewed paraphrases**, not a collection of full statutes, judgments or verbatim government documents. Source review date: 14 November 2026. General legal information only; no legal expert validation has been completed.
+The collection covers **10 introductory topics plus emergency signposting**: freedom of speech, equality before the law, life and personal liberty, education, constitutional remedies, consumer complaints, cyber fraud reporting, legal aid, assistance for women and central RTI requests. The constitutional notes cite the Legislative Department’s official Constitution (as on 10 September 2026); see [source-review details](docs/SOURCE_REVIEW.md). These are **reviewed paraphrases**, not a collection of full statutes, judgments or verbatim government documents. Source review date: 14 November 2026. General legal information only; no legal expert validation has been completed.
 
 ## Step-by-step setup
 
@@ -63,7 +65,7 @@ The full guide, including Windows commands and troubleshooting, is in **[docs/SE
    pnpm dev
    ```
 
-7. Open **[localhost:5173](http://localhost:5173)**. The header should show **Source retrieval**. Ask “How do I track my consumer grievance?” and expand **Read the retrieved evidence**. Keep both terminals running; Ctrl+C stops each server.
+7. Open **[localhost:5173](http://localhost:5173)**. The header should show **Source retrieval**. Ask “what is a right to speech?” and expand **Read the retrieved evidence**. Keep both terminals running; Ctrl+C stops each server.
 
 VS Code tasks for the frontend, backend, ingestion and tests are included under **Terminal → Run Task**. They use the project’s `.venv`; create it before running the Python tasks.
 
@@ -119,7 +121,7 @@ pnpm typecheck
 pnpm lint
 ```
 
-The first command skips the two real-model tests; the second includes them. Windows equivalents are in the setup guide. CI installs the semantic dependencies and runs all Python and web checks. Generation tests use a mocked provider, so they incur no API charges. The evaluation is a small authored regression set, not an independent legal-accuracy benchmark.
+The first command skips the three real-model tests; the second includes them. Windows equivalents are in the setup guide. CI installs the semantic dependencies and runs all Python and web checks. Generation tests use a mocked provider, so they incur no API charges. The evaluation is a small authored regression set, not an independent legal-accuracy benchmark.
 
 ## Privacy and limits
 
@@ -129,6 +131,6 @@ Valid chunk IDs and matching quotes do not prove that a generated claim logicall
 
 ## Deployment and license
 
-Follow **[the beginner deployment guide](docs/DEPLOYMENT.md)** for Cloudflare Workers Free + Render Free. The GitHub Actions deployment job waits for web/Python checks, deploys the exact backend commit, then deploys and checks the public web app. It stays disabled until `DEPLOY_ENABLED=true` and hosting secrets are configured. The Python embedding process runs separately from the Cloudflare Worker.
+Follow **[the beginner deployment guide](docs/DEPLOYMENT.md)** for Cloudflare Workers Free + Render Free. The GitHub Actions deployment job waits for web/Python checks, deploys the exact backend commit, then deploys and checks the public web app. For a new fork, deployment stays disabled until `DEPLOY_ENABLED=true` and hosting secrets are configured; the owner’s demo already has these settings. The Python embedding process runs separately from the Cloudflare Worker.
 
 Project code retains the [MIT license](LICENSE). Dependency/model licenses and official source terms remain separate. The web foundation uses the Sites React/Vinext scaffold; its third-party notices remain in `vendor/` and `scripts/vite/`.

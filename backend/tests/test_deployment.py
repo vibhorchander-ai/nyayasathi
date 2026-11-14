@@ -78,9 +78,21 @@ class DeploymentTests(unittest.TestCase):
     def test_smoke_does_not_spend_llm_quota(self):
         with patch.object(deploy, "request_json", side_effect=[b"NyayaSathi", {
             "backendAvailable": True, "engine": "bge", "aiAvailable": True}, {
-                "mode": "retrieval", "topic": "consumer", "points": [{"text": "retrieved"}]}]) as request:
+                "mode": "retrieval", "topic": "consumer", "points": [{"text": "retrieved"}]}, {
+                "mode": "retrieval", "topic": "speech", "retrieval": {"chunks": [{"factId": "speech-right"}, {"factId": "speech-limits"}]}}]) as request:
             deploy.smoke_once({"NYAYA_PUBLIC_URL": "https://demo.account.workers.dev"})
-            self.assertIs(request.call_args.kwargs["body"]["useAI"], False)
+            posts = [call for call in request.call_args_list if call.kwargs.get('method') == 'POST']
+            self.assertEqual(len(posts), 2)
+            for call in posts:
+                self.assertIs(call.kwargs["body"]["useAI"], False)
+
+    def test_public_speech_regression_blocks_missing_qualifications(self):
+        with patch.object(deploy, "request_json", side_effect=[b"NyayaSathi", {
+            "backendAvailable": True, "engine": "bge", "aiAvailable": True}, {
+                "mode": "retrieval", "topic": "consumer", "points": [{"text": "retrieved"}]}, {
+                "mode": "retrieval", "topic": "speech", "retrieval": {"chunks": [{"factId": "speech-right"}]}}]):
+            with self.assertRaisesRegex(deploy.DeploymentError, "speech regression"):
+                deploy.smoke_once({"NYAYA_PUBLIC_URL": "https://demo.account.workers.dev"})
 
 
 if __name__ == "__main__":

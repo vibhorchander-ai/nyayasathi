@@ -126,7 +126,7 @@ def create_app(settings=None, retriever=None, client=None):
         p = app.state.pipeline
         return {"aiAvailable": bool(settings.groq_key) and settings.daily_ai_limit > 0,
                 "backendAvailable": True, "engine": settings.engine, "model": p.retriever.signature["model"],
-                "chunks": len(p.retriever.chunks), "coverage": 5, "reviewedOn": p.catalog["reviewedOn"]}
+                "chunks": len(p.retriever.chunks), "coverage": sum(t != "emergency" for t in p.topics), "reviewedOn": p.catalog["reviewedOn"]}
 
     @app.post("/api/chat")
     async def chat(body: ChatRequest):

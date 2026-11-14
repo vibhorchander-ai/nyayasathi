@@ -1,7 +1,26 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { localAnswer, answerQuestion, redact, handleAPI, permitRequest } from '../lib/legal-engine.mjs';
-import { topics, sources } from '../lib/knowledge.mjs';
+import { topics, sources, coverage } from '../lib/knowledge.mjs';
+
+test('speech fallback includes the right, restrictions and official Constitution sources', () => {
+  for (const question of ['what is a right to speech?', 'Is freedom of expression unlimited?', 'Explain Article 19(2)']) {
+    const answer = localAnswer(question, 'rti');
+    assert.equal(answer.topic, 'speech');
+    assert.deepEqual(answer.points.map(p => p.id), ['speech-right', 'speech-limits']);
+    assert.ok(answer.sources.some(s => s.id === 'constitution-speech'));
+    assert.ok(!answer.sources.some(s => s.id === 'rti'));
+  }
+});
+test('fallback distinguishes article references and refuses uncovered clauses', () => {
+  for (const [article, topic] of [['14', 'equality'], ['21', 'liberty'], ['21A', 'education'], ['32', 'remedies']]) assert.equal(localAnswer(`Explain Article ${article}`).topic, topic);
+  for (const q of ['Explain Article 20', 'Explain Article 19(1)(b)', 'Compare Article 14 and Article 21', 'What is the right to property?', 'What is a right triangle?']) assert.equal(localAnswer(q).mode, 'limited', q);
+});
+test('fallback status derives coverage from the source collection', async () => {
+  const result = await handleAPI(new Request('https://example.com/api/status'));
+  assert.equal((await result.json()).coverage, coverage);
+  assert.equal(coverage, topics.length - 1);
+});
 
 for (const topic of topics) test(`suggested question reaches ${topic.id}`, () => {
   const answer = localAnswer(topic.example);

@@ -137,5 +137,170 @@
   {
     "question": "How to start a restaurant?",
     "topic": null
+  },
+  {
+    "question": "what is a right to speech?",
+    "topic": "speech",
+    "fact": "speech-right"
+  },
+  {
+    "question": "What is freedom of expression?",
+    "topic": "speech",
+    "fact": "speech-right"
+  },
+  {
+    "question": "Is freedom of speech unlimited?",
+    "topic": "speech",
+    "fact": "speech-limits"
+  },
+  {
+    "question": "Can I express my opinions freely?",
+    "topic": "speech",
+    "fact": "speech-right"
+  },
+  {
+    "question": "What are reasonable restrictions on expression?",
+    "topic": "speech",
+    "fact": "speech-limits"
+  },
+  {
+    "question": "Explain Article 19(1)(a)",
+    "topic": "speech",
+    "fact": "speech-right"
+  },
+  {
+    "question": "What does Article 19(2) allow?",
+    "topic": "speech",
+    "fact": "speech-limits"
+  },
+  {
+    "question": "Does freedom of speech protect non-citizens under Article 19?",
+    "topic": "speech",
+    "fact": "speech-right"
+  },
+  {
+    "question": "What does equality before the law mean?",
+    "topic": "equality",
+    "fact": "equality-protection"
+  },
+  {
+    "question": "Can the government treat people unequally under the law?",
+    "topic": "equality",
+    "fact": "equality-protection"
+  },
+  {
+    "question": "Does Article 14 apply only to citizens?",
+    "topic": "equality",
+    "fact": "equality-protection"
+  },
+  {
+    "question": "What is the right to life and personal liberty?",
+    "topic": "liberty",
+    "fact": "liberty-protection"
+  },
+  {
+    "question": "Explain Article 21",
+    "topic": "liberty",
+    "fact": "liberty-protection"
+  },
+  {
+    "question": "Does Article 21 protect every person?",
+    "topic": "liberty",
+    "fact": "liberty-protection"
+  },
+  {
+    "question": "Which children have the right to free education?",
+    "topic": "education",
+    "fact": "education-age"
+  },
+  {
+    "question": "My child is eight. Must the state provide schooling?",
+    "topic": "education",
+    "fact": "education-age"
+  },
+  {
+    "question": "What age group does Article 21A cover?",
+    "topic": "education",
+    "fact": "education-age"
+  },
+  {
+    "question": "Does Article 21A guarantee free university education?",
+    "topic": "education",
+    "fact": "education-age"
+  },
+  {
+    "question": "What is the right to constitutional remedies?",
+    "topic": "remedies",
+    "fact": "remedies-court"
+  },
+  {
+    "question": "How can fundamental rights be enforced?",
+    "topic": "remedies",
+    "fact": "remedies-court"
+  },
+  {
+    "question": "What powers does Article 32 give the Supreme Court?",
+    "topic": "remedies",
+    "fact": "remedies-writs"
+  },
+  {
+    "question": "What is the right to property?",
+    "topic": null
+  },
+  {
+    "question": "What is a right to vote?",
+    "topic": null
+  },
+  {
+    "question": "What are my rights?",
+    "topic": null
+  },
+  {
+    "question": "Do animals have rights?",
+    "topic": null
+  },
+  {
+    "question": "What is freedom of assembly?",
+    "topic": null
+  },
+  {
+    "question": "What is the right to privacy?",
+    "topic": null
+  },
+  {
+    "question": "What rights do I have when arrested?",
+    "topic": null
+  },
+  {
+    "question": "What is a right triangle?",
+    "topic": null
+  },
+  {
+    "question": "Explain Article 20",
+    "topic": null
+  },
+  {
+    "question": "Explain Article 19(1)(b)",
+    "topic": null
+  },
+  {
+    "question": "Compare Article 14 and Article 21",
+    "topic": null
+  },
+  {
+    "question": "Is freedom of speech unlimited in the United States?",
+    "topic": null
+  },
+  {
+    "question": "what is a right to speech?",
+    "previousTopic": "rti",
+    "topic": "speech",
+    "fact": "speech-limits"
+  },
+  {
+    "question": "Tell me more",
+    "previousTopic": "speech",
+    "topic": "speech",
+    "fact": "speech-limits"
   }
 ]

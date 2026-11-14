@@ -30,6 +30,9 @@ def load_corpus(path):
             if fact["id"] in ids or fact["source"] not in sources or not fact["text"].strip():
                 raise ValueError("Duplicate fact ID, missing source or empty text")
             ids.add(fact["id"])
+        required = topic.get("requiredFacts", [])
+        if len(required) > 4 or not set(required).issubset({f["id"] for f in topic["facts"]}):
+            raise ValueError("Required context must reference up to four facts in its topic")
     return catalog, sha256(raw).hexdigest()
 
 

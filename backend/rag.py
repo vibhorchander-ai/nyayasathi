@@ -8,6 +8,21 @@ from .retrieval import tokens
 FOREIGN = re.compile(r"\b(usa|u\.s\.a?\.?|united states|united kingdom|uk|canada|australia|california|new york|pakistan|germany|london|singapore|dubai)\b", re.I)
 UNSUPPORTED = re.compile(r"\b(fake|forge|bribe|destroy evidence|hide evidence|evade police|win my case|predict|guarantee (?:me|that i|my)|invent|ignore previous|system prompt|jail term|limitation period|filing deadline|divorce|inheritance|bail|tenancy|eviction|income tax|tax return|gst|employment contract|salary dispute)\b", re.I)
 FOLLOW_UP = re.compile(r"^(what documents (do i need|should i keep)|what should i (keep|prepare)|what next|how (do|can) i (apply|track|contact|report)( it| this| them)?|where (do|can) i apply|tell me more|what about (the )?fees)[?.! ]*$", re.I)
+ARTICLE = re.compile(r"\b(?:article|art\.?)\s*(\d+[a-z]?(?:\s*\([a-z0-9]+\))*)", re.I)
+# These words alone cannot establish coverage. TF-IDF normalises away unseen
+# words, so "right to [unknown concept]" used to look like a strong RTI match.
+GENERIC = set("right rights freedom fundamental legal law laws article constitution constitutional india indian person persons people citizen citizens state government explain say mean means rules rule there only".split())
+
+
+def relevant_hit(query, hit, engine):
+    specific = set(tokens(query)) - GENERIC
+    overlap = specific.intersection(tokens(hit["searchText"]))
+    lexical = hit["lexicalScore"] >= 0.16 and bool(overlap)
+    # Longer paraphrases can be supported semantically without exact vocabulary.
+    # Very short queries need meaningful overlap or a stronger semantic match.
+    semantic = engine == "bge" and hit["semanticScore"] >= 0.64 and (
+        bool(overlap) or len(specific) >= 3 or hit["semanticScore"] >= 0.78)
+    return bool(specific) and (lexical or semantic)
 
 
 def redact(text):
@@ -54,7 +69,8 @@ class Pipeline:
                               "corpusHash": self.retriever.corpus_hash, "chunks": hits}}
 
     def limited(self, note=""):
-        return {"topic": None, "title": "More evidence is needed", "intro": "The reviewed collection does not provide enough support for that question. I can help with introductory information about consumer complaints, cyber fraud reporting, legal aid, support for women and central RTI requests.",
+        scope = ", ".join(t["name"] for t in self.topics.values() if t["id"] != "emergency")
+        return {"topic": None, "title": "More evidence is needed", "intro": f"The reviewed collection does not provide enough support for that question. Introductory topics include: {scope}. Please name one topic or use a suggested question.",
                 "points": [], "steps": ["Describe one issue without personal identifiers.", "For advice on your specific situation, contact a Legal Services Authority."],
                 "sources": [self.catalog["sources"]["aidAccess"]], "caveat": "Coverage is limited to reviewed introductory information for India. No case predictions or state-specific legal determinations.",
                 "link": {"label": "Explore free legal aid", "url": self.catalog["sources"]["aid"]["url"]},
@@ -75,17 +91,22 @@ class Pipeline:
         query = question
         if previous_topic in self.topics and FOLLOW_UP.fullmatch(question.strip()):
             query = self.topics[previous_topic]["name"] + ": " + question
-        hits = self.retriever.search(query, limit=8)
-        best = hits[0]
-        # Similarity is a relevance signal, not a confidence or legal-accuracy percentage.
-        relevant = best["lexicalScore"] >= 0.16
-        if self.settings.engine == "bge":
-            relevant = relevant or best["semanticScore"] >= 0.64
-        if not relevant or not tokens(query):
+        articles = {re.sub(r"\s", "", a.lower()) for a in ARTICLE.findall(query)}
+        article_topics = {a: t["id"] for t in self.topics.values() for a in t.get("articles", [])}
+        if articles and (not articles.issubset(article_topics) or len({article_topics[a] for a in articles}) != 1):
+            return self.limited("The requested articles are not covered together by these introductory notes.")
+        # This corpus is small. Search all chunks so required qualifications cannot
+        # disappear below an arbitrary top-eight cutoff.
+        hits = self.retriever.search(query, limit=len(self.retriever.chunks))
+        if articles:
+            hits = [h for h in hits if h["topic"] == article_topics[next(iter(articles))]]
+        if not hits or (not articles and not relevant_hit(query, hits[0], self.settings.engine)):
             return self.limited()
-        topic_id = best["topic"]
+        topic_id = hits[0]["topic"]
         # Keep a response within one topic to avoid mixing unrelated rules.
-        selected = [h for h in hits if h["topic"] == topic_id][:4]
+        topic_hits = [h for h in hits if h["topic"] == topic_id]
+        required = self.topics[topic_id].get("requiredFacts", [])
+        selected = sorted(topic_hits, key=lambda h: required.index(h["factId"]) if h["factId"] in required else len(required))[:4]
         result = self.response(topic_id, selected)
         if topic_id == "consumer" and re.search(r"\b(track|status)\b", query, re.I):
             result["title"] = "Track your consumer grievance"

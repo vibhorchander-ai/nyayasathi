@@ -1,6 +1,7 @@
 """Optional tests with real model weights: NYAYA_TEST_SEMANTIC=1 python -m unittest discover -s backend/tests."""
 from dataclasses import replace
 import os
+import json
 from pathlib import Path
 import tempfile
 import unittest
@@ -32,3 +33,14 @@ class SemanticTests(unittest.TestCase):
         pipeline = Pipeline(self.index, self.settings)
         for q in ['Who won a cricket match?', 'How do I grow tomatoes?', 'How do I file income tax?']:
             self.assertIsNone(pipeline.retrieve(q)['topic'])
+
+    def test_expanded_regressions_with_real_embeddings(self):
+        # No LLM or credentials: fail CI on wrong routes or missing expected facts.
+        cases = json.loads((Path(__file__).parents[1] / 'eval_cases.json').read_text())
+        pipeline = Pipeline(self.index, self.settings)
+        for case in cases:
+            with self.subTest(question=case['question']):
+                answer = pipeline.retrieve(case['question'], case.get('previousTopic'))
+                self.assertEqual(answer['topic'], case['topic'])
+                if case.get('fact') and answer['topic'] != 'emergency':
+                    self.assertIn(case['fact'], {c['factId'] for c in answer['retrieval']['chunks']})

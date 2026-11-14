@@ -60,9 +60,123 @@
       "publisher": "Ministry of Home Affairs",
       "url": "https://www.mha.gov.in/emergency-response-support-system-erss",
       "reviewedOn": "2026-11-14"
+    },
+    "constitution-speech": {
+      "id": "constitution-speech",
+      "title": "Constitution of India · Freedom of speech",
+      "publisher": "Legislative Department, Ministry of Law and Justice",
+      "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=40",
+      "reviewedOn": "2026-11-14",
+      "edition": "As on 10 September 2026",
+      "sections": [
+        "19",
+        "19(1)(a)",
+        "19(2)"
+      ]
+    },
+    "constitution-equality": {
+      "id": "constitution-equality",
+      "title": "Constitution of India · Equality before the law",
+      "publisher": "Legislative Department, Ministry of Law and Justice",
+      "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=37",
+      "reviewedOn": "2026-11-14",
+      "edition": "As on 10 September 2026",
+      "sections": [
+        "14"
+      ]
+    },
+    "constitution-liberty": {
+      "id": "constitution-liberty",
+      "title": "Constitution of India · Life & personal liberty",
+      "publisher": "Legislative Department, Ministry of Law and Justice",
+      "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=42",
+      "reviewedOn": "2026-11-14",
+      "edition": "As on 10 September 2026",
+      "sections": [
+        "21"
+      ]
+    },
+    "constitution-education": {
+      "id": "constitution-education",
+      "title": "Constitution of India · Right to education",
+      "publisher": "Legislative Department, Ministry of Law and Justice",
+      "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=42",
+      "reviewedOn": "2026-11-14",
+      "edition": "As on 10 September 2026",
+      "sections": [
+        "21a"
+      ]
+    },
+    "constitution-remedies": {
+      "id": "constitution-remedies",
+      "title": "Constitution of India · Constitutional remedies",
+      "publisher": "Legislative Department, Ministry of Law and Justice",
+      "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=50",
+      "reviewedOn": "2026-11-14",
+      "edition": "As on 10 September 2026",
+      "sections": [
+        "32"
+      ]
     }
   },
   "topics": [
+    {
+      "id": "speech",
+      "name": "Freedom of speech",
+      "icon": "speech",
+      "short": "Expression & constitutional limits",
+      "example": "What is the right to speech?",
+      "keywords": [
+        "speech",
+        "expression",
+        "express myself",
+        "express opinions",
+        "speak freely",
+        "article 19",
+        "art 19",
+        "19(1)(a)",
+        "19(2)"
+      ],
+      "articles": [
+        "19",
+        "19(1)(a)",
+        "19(2)"
+      ],
+      "title": "Freedom of speech in India",
+      "intro": "Here is an introduction based on the official Constitution of India.",
+      "facts": [
+        {
+          "id": "speech-right",
+          "text": "Article 19(1)(a) protects Indian citizens’ freedom of speech and expression: the freedom to express their views. It is not unlimited; Article 19(2) allows reasonable restrictions imposed by law.",
+          "source": "constitution-speech"
+        },
+        {
+          "id": "speech-limits",
+          "text": "Under Article 19(2), laws may reasonably restrict speech for India’s sovereignty and integrity, State security, friendly relations with foreign States, public order, decency or morality, contempt of court, defamation, or incitement to an offence.",
+          "source": "constitution-speech"
+        }
+      ],
+      "steps": [
+        "Open the official Constitution link and read the article alongside its qualifications.",
+        "For a specific dispute, ask a qualified lawyer or Legal Services Authority to review the facts."
+      ],
+      "extraSources": [
+        "aidAccess"
+      ],
+      "caveat": "This covers speech under Article 19(1)(a) and 19(2), not every freedom in Article 19. It does not decide whether a particular statement, post, restriction or prosecution is lawful.",
+      "link": {
+        "label": "Read the official Constitution",
+        "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=40"
+      },
+      "followUps": [
+        "Is freedom of speech unlimited?",
+        "What is equality before the law?"
+      ],
+      "requiredFacts": [
+        "speech-right",
+        "speech-limits"
+      ]
+    },
     {
       "id": "consumer",
       "name": "Consumer rights",
@@ -336,6 +450,182 @@
       "followUps": [
         "Can I use this RTI portal for a state government?",
         "Is there a fee for a first RTI appeal?"
+      ]
+    },
+    {
+      "id": "equality",
+      "name": "Equality before the law",
+      "icon": "scale",
+      "short": "Equal protection · Article 14",
+      "example": "What does equality before the law mean?",
+      "keywords": [
+        "equality",
+        "equal protection",
+        "equal before",
+        "equal treatment",
+        "article 14",
+        "art 14"
+      ],
+      "articles": [
+        "14"
+      ],
+      "title": "Equality before the law in India",
+      "intro": "Here is an introduction based on the official Constitution of India.",
+      "facts": [
+        {
+          "id": "equality-protection",
+          "text": "Article 14 requires the State to give every person equality before the law and equal legal protection within India. Its wording covers persons, not only citizens.",
+          "source": "constitution-equality"
+        }
+      ],
+      "steps": [
+        "Open the official Constitution link and read the article alongside its qualifications.",
+        "For a specific dispute, ask a qualified lawyer or Legal Services Authority to review the facts."
+      ],
+      "extraSources": [
+        "aidAccess"
+      ],
+      "caveat": "This explains Article 14 at an introductory level. It does not determine whether a specific classification, reservation policy or act of discrimination is unconstitutional.",
+      "link": {
+        "label": "Read the official Constitution",
+        "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=37"
+      },
+      "followUps": [
+        "Does Article 14 apply only to citizens?",
+        "Can I get free legal aid?"
+      ]
+    },
+    {
+      "id": "liberty",
+      "name": "Life & personal liberty",
+      "icon": "heart",
+      "short": "Protection under Article 21",
+      "example": "What is the right to life and personal liberty?",
+      "keywords": [
+        "right to life",
+        "personal liberty",
+        "article 21",
+        "art 21"
+      ],
+      "articles": [
+        "21"
+      ],
+      "title": "Life & personal liberty in India",
+      "intro": "Here is an introduction based on the official Constitution of India.",
+      "facts": [
+        {
+          "id": "liberty-protection",
+          "text": "Article 21 protects every person’s life and personal liberty. The State can deprive a person of these only through a procedure established by law; the protection is not limited to citizens.",
+          "source": "constitution-liberty"
+        }
+      ],
+      "steps": [
+        "Open the official Constitution link and read the article alongside its qualifications.",
+        "For a specific dispute, ask a qualified lawyer or Legal Services Authority to review the facts."
+      ],
+      "extraSources": [
+        "aidAccess"
+      ],
+      "caveat": "This is the basic text of Article 21. The collection does not cover its full case-law interpretation, privacy disputes, arrest procedure or bail.",
+      "link": {
+        "label": "Read the official Constitution",
+        "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=42"
+      },
+      "followUps": [
+        "What does Article 21 protect?",
+        "Can I get free legal aid?"
+      ]
+    },
+    {
+      "id": "education",
+      "name": "Right to education",
+      "icon": "book",
+      "short": "Children aged 6–14 · Article 21A",
+      "example": "Which children have the right to free education?",
+      "keywords": [
+        "education",
+        "schooling",
+        "school education",
+        "article 21a",
+        "art 21a",
+        "free school"
+      ],
+      "articles": [
+        "21a"
+      ],
+      "title": "Right to education in India",
+      "intro": "Here is an introduction based on the official Constitution of India.",
+      "facts": [
+        {
+          "id": "education-age",
+          "text": "Article 21A requires the State to provide free, compulsory education for all children aged six to fourteen, in the manner determined by law.",
+          "source": "constitution-education"
+        }
+      ],
+      "steps": [
+        "Open the official Constitution link and read the article alongside its qualifications.",
+        "For a specific dispute, ask a qualified lawyer or Legal Services Authority to review the facts."
+      ],
+      "extraSources": [
+        "aidAccess"
+      ],
+      "caveat": "This covers the constitutional age range, not school admission procedures, fee reimbursement, private-school quotas or a guarantee of free education at every age.",
+      "link": {
+        "label": "Read the official Constitution",
+        "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=42"
+      },
+      "followUps": [
+        "What age group does Article 21A cover?",
+        "Can children apply for legal aid?"
+      ]
+    },
+    {
+      "id": "remedies",
+      "name": "Constitutional remedies",
+      "icon": "scale",
+      "short": "Enforcing fundamental rights · Article 32",
+      "example": "What is the right to constitutional remedies?",
+      "keywords": [
+        "constitutional remedies",
+        "constitutional remedy",
+        "enforce fundamental rights",
+        "enforcement of fundamental rights",
+        "article 32",
+        "art 32",
+        "writs"
+      ],
+      "articles": [
+        "32"
+      ],
+      "title": "Constitutional remedies in India",
+      "intro": "Here is an introduction based on the official Constitution of India.",
+      "facts": [
+        {
+          "id": "remedies-court",
+          "text": "Article 32 guarantees access to the Supreme Court through appropriate proceedings to enforce fundamental rights in Part III of the Constitution.",
+          "source": "constitution-remedies"
+        },
+        {
+          "id": "remedies-writs",
+          "text": "For that enforcement, Article 32 empowers the Supreme Court to issue directions, orders or writs. These include habeas corpus, mandamus, prohibition, quo warranto and certiorari, as appropriate.",
+          "source": "constitution-remedies"
+        }
+      ],
+      "steps": [
+        "Open the official Constitution link and read the article alongside its qualifications.",
+        "For a specific dispute, ask a qualified lawyer or Legal Services Authority to review the facts."
+      ],
+      "extraSources": [
+        "aidAccess"
+      ],
+      "caveat": "This does not promise that a petition will be admitted or succeed. Court selection, drafting, filing requirements and the remedy for your circumstances require individual legal advice.",
+      "link": {
+        "label": "Read the official Constitution",
+        "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=50"
+      },
+      "followUps": [
+        "What powers does Article 32 give the Supreme Court?",
+        "Can I get free legal aid?"
       ]
     },
     {

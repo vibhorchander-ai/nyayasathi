@@ -1,10 +1,23 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { handleAPI, localAnswer } from '../lib/legal-engine.mjs';
-import { backendAnswer } from '../lib/backend-proxy.mjs';
+import { backendAnswer, backendStatus } from '../lib/backend-proxy.mjs';
+import { coverage } from '../lib/knowledge.mjs';
 const env = { NYAYA_BACKEND_URL: 'http://127.0.0.1:8000', NYAYA_BACKEND_TOKEN: 'test-token' };
 let sequence = 0;
 const request = () => new Request('https://demo.example/api/chat', { method: 'POST', headers: { 'content-type': 'application/json', 'cf-connecting-ip': `proxy-${++sequence}` }, body: JSON.stringify({ question: 'How do I get a refund?', useAI: true }) });
+test('expanded coverage is preserved through the backend proxy', async () => {
+  const status = await backendStatus(env, async () => Response.json({ backendAvailable: true, engine: 'bge', coverage, aiAvailable: false }));
+  assert.equal(status.coverage, coverage);
+});
+test('speech still works when the free Python service is unavailable', async () => {
+  const req = new Request('https://demo.example/api/chat', { method: 'POST', headers: { 'content-type': 'application/json', 'cf-connecting-ip': 'speech-outage-test' }, body: JSON.stringify({ question: 'what is a right to speech?', useAI: true }) });
+  const result = await (await handleAPI(req, env, async () => { throw new Error('asleep'); })).json();
+  assert.equal(result.topic, 'speech');
+  assert.equal(result.mode, 'guide');
+  assert.equal(result.backendAvailable, false);
+  assert.equal(result.points.length, 2);
+});
 test('same-origin API forwards consent to Python and keeps the token server-side', async () => {
   let sent;
   const result = { ...localAnswer('I need a refund'), mode: 'retrieval' };

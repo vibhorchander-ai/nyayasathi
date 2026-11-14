@@ -149,6 +149,11 @@ def smoke_once(env):
                           body={"question": "How do I track my consumer grievance?", "useAI": False})
     if answer.get("mode") != "retrieval" or answer.get("topic") != "consumer" or not answer.get("points"):
         raise DeploymentError("Public retrieval smoke test failed; a guide fallback is not a successful deployment test.")
+    speech = request_json(base + "/api/chat", method="POST",
+                          body={"question": "what is a right to speech?", "useAI": False})
+    facts = {c.get("factId") for c in speech.get("retrieval", {}).get("chunks", [])}
+    if speech.get("mode") != "retrieval" or speech.get("topic") != "speech" or not {"speech-right", "speech-limits"}.issubset(facts):
+        raise DeploymentError("Public speech regression failed: both the right and its restrictions must be retrieved.")
     print("Public app → authenticated Python → BGE retrieval passed. No Groq quota used by CI.")
 
 
