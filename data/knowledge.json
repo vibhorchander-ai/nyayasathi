@@ -1,0 +1,671 @@
+{
+  "schemaVersion": 1,
+  "jurisdiction": "India",
+  "contentKind": "reviewed_paraphrases",
+  "reviewedOn": "2026-11-14",
+  "disclaimer": "General legal information for India, not legal advice. A qualified lawyer can assess your specific circumstances.",
+  "sources": {
+    "consumer": {
+      "id": "consumer",
+      "title": "National Consumer Helpline · About the service",
+      "publisher": "Department of Consumer Affairs",
+      "url": "https://consumerhelpline.gov.in/public/about",
+      "reviewedOn": "2026-11-14"
+    },
+    "contact": {
+      "id": "contact",
+      "title": "National Consumer Helpline · Contact",
+      "publisher": "Department of Consumer Affairs",
+      "url": "https://consumerhelpline.gov.in/public/contact",
+      "reviewedOn": "2026-11-14"
+    },
+    "cyber": {
+      "id": "cyber",
+      "title": "Cyber fraud reporting advisory",
+      "publisher": "Indian Cyber Crime Coordination Centre",
+      "url": "https://cybercrime.gov.in/Webform/theme/resources/advisories/ADVISORY%20TAU-ADV-004_Captcha%20Filling%20Fraud_08.04.2025.pdf",
+      "reviewedOn": "2026-11-14"
+    },
+    "aid": {
+      "id": "aid",
+      "title": "Free legal aid · Frequently asked questions",
+      "publisher": "National Legal Services Authority",
+      "url": "https://nalsa.gov.in/faqs/",
+      "reviewedOn": "2026-11-14"
+    },
+    "aidAccess": {
+      "id": "aidAccess",
+      "title": "How to access legal aid",
+      "publisher": "Himachal Pradesh State Legal Services Authority",
+      "url": "https://himachalpradesh.nalsa.gov.in/legal-aid/",
+      "reviewedOn": "2026-11-14"
+    },
+    "women": {
+      "id": "women",
+      "title": "Assistance for women",
+      "publisher": "National Legal Services Authority",
+      "url": "https://nalsa.gov.in/womens-assistance/",
+      "reviewedOn": "2026-11-14"
+    },
+    "rti": {
+      "id": "rti",
+      "title": "RTI Online · Frequently asked questions",
+      "publisher": "Department of Personnel & Training",
+      "url": "https://rtionline.gov.in/faq.php",
+      "reviewedOn": "2026-11-14"
+    },
+    "emergency": {
+      "id": "emergency",
+      "title": "Emergency Response Support System",
+      "publisher": "Ministry of Home Affairs",
+      "url": "https://www.mha.gov.in/emergency-response-support-system-erss",
+      "reviewedOn": "2026-11-14"
+    },
+    "constitution-speech": {
+      "id": "constitution-speech",
+      "title": "Constitution of India · Freedom of speech",
+      "publisher": "Legislative Department, Ministry of Law and Justice",
+      "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=40",
+      "reviewedOn": "2026-11-14",
+      "edition": "As on 10 September 2026",
+      "sections": [
+        "19",
+        "19(1)(a)",
+        "19(2)"
+      ]
+    },
+    "constitution-equality": {
+      "id": "constitution-equality",
+      "title": "Constitution of India · Equality before the law",
+      "publisher": "Legislative Department, Ministry of Law and Justice",
+      "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=37",
+      "reviewedOn": "2026-11-14",
+      "edition": "As on 10 September 2026",
+      "sections": [
+        "14"
+      ]
+    },
+    "constitution-liberty": {
+      "id": "constitution-liberty",
+      "title": "Constitution of India · Life & personal liberty",
+      "publisher": "Legislative Department, Ministry of Law and Justice",
+      "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=42",
+      "reviewedOn": "2026-11-14",
+      "edition": "As on 10 September 2026",
+      "sections": [
+        "21"
+      ]
+    },
+    "constitution-education": {
+      "id": "constitution-education",
+      "title": "Constitution of India · Right to education",
+      "publisher": "Legislative Department, Ministry of Law and Justice",
+      "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=42",
+      "reviewedOn": "2026-11-14",
+      "edition": "As on 10 September 2026",
+      "sections": [
+        "21a"
+      ]
+    },
+    "constitution-remedies": {
+      "id": "constitution-remedies",
+      "title": "Constitution of India · Constitutional remedies",
+      "publisher": "Legislative Department, Ministry of Law and Justice",
+      "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=50",
+      "reviewedOn": "2026-11-14",
+      "edition": "As on 10 September 2026",
+      "sections": [
+        "32"
+      ]
+    }
+  },
+  "topics": [
+    {
+      "id": "speech",
+      "name": "Freedom of speech",
+      "icon": "speech",
+      "short": "Expression & constitutional limits",
+      "example": "What is the right to speech?",
+      "keywords": [
+        "speech",
+        "expression",
+        "express myself",
+        "express opinions",
+        "speak freely",
+        "article 19",
+        "art 19",
+        "19(1)(a)",
+        "19(2)"
+      ],
+      "articles": [
+        "19",
+        "19(1)(a)",
+        "19(2)"
+      ],
+      "title": "Freedom of speech in India",
+      "intro": "Here is an introduction based on the official Constitution of India.",
+      "facts": [
+        {
+          "id": "speech-right",
+          "text": "Article 19(1)(a) protects Indian citizens’ freedom of speech and expression: the freedom to express their views. It is not unlimited; Article 19(2) allows reasonable restrictions imposed by law.",
+          "source": "constitution-speech"
+        },
+        {
+          "id": "speech-limits",
+          "text": "Under Article 19(2), laws may reasonably restrict speech for India’s sovereignty and integrity, State security, friendly relations with foreign States, public order, decency or morality, contempt of court, defamation, or incitement to an offence.",
+          "source": "constitution-speech"
+        }
+      ],
+      "steps": [
+        "Open the official Constitution link and read the article alongside its qualifications.",
+        "For a specific dispute, ask a qualified lawyer or Legal Services Authority to review the facts."
+      ],
+      "extraSources": [
+        "aidAccess"
+      ],
+      "caveat": "This covers speech under Article 19(1)(a) and 19(2), not every freedom in Article 19. It does not decide whether a particular statement, post, restriction or prosecution is lawful.",
+      "link": {
+        "label": "Read the official Constitution",
+        "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=40"
+      },
+      "followUps": [
+        "Is freedom of speech unlimited?",
+        "What is equality before the law?"
+      ],
+      "requiredFacts": [
+        "speech-right",
+        "speech-limits"
+      ]
+    },
+    {
+      "id": "consumer",
+      "name": "Consumer rights",
+      "icon": "bag",
+      "short": "Refunds, purchases & complaints",
+      "example": "An online seller won't refund a defective product. What can I do?",
+      "keywords": [
+        "refund",
+        "defective",
+        "consumer",
+        "seller",
+        "purchase",
+        "product",
+        "warranty",
+        "shopping",
+        "delivery",
+        "ecommerce",
+        "e-commerce",
+        "damaged",
+        "shop",
+        "order",
+        "return",
+        "1915"
+      ],
+      "title": "A starting point for your consumer complaint",
+      "intro": "You can raise a consumer grievance through the National Consumer Helpline (NCH). Whether a refund or another remedy is available depends on the facts of your purchase.",
+      "facts": [
+        {
+          "id": "consumer-route",
+          "text": "NCH helps with consumer grievances before litigation. It is a complaint resolution service, and submitting a grievance does not guarantee a remedy.",
+          "source": "consumer"
+        },
+        {
+          "id": "consumer-contact",
+          "text": "Register through the NCH portal or call 1915. The published call hours are 8 AM–8 PM, excluding national holidays.",
+          "source": "contact"
+        },
+        {
+          "id": "consumer-escalation",
+          "text": "If the grievance remains unresolved, you can consider approaching the appropriate Consumer Commission. NCH is separate from that formal process.",
+          "source": "consumer"
+        },
+        {
+          "id": "consumer-track",
+          "text": "NCH gives a unique docket number for a registered grievance. Use the portal's Track your Grievance option to check its status.",
+          "source": "consumer"
+        }
+      ],
+      "steps": [
+        "As a practical preparation step, keep the invoice, order details, photos and correspondence together.",
+        "Describe what happened and the remedy you are requesting in your NCH grievance.",
+        "Save the grievance docket number so you can follow up."
+      ],
+      "caveat": "This guide does not determine your right to a refund, filing deadline, or the correct Consumer Commission for your case.",
+      "link": {
+        "label": "Open National Consumer Helpline",
+        "url": "https://consumerhelpline.gov.in/public/"
+      },
+      "followUps": [
+        "How do I track my consumer complaint?",
+        "Can I get free legal aid?"
+      ]
+    },
+    {
+      "id": "cyber",
+      "name": "Cyber fraud",
+      "icon": "shield",
+      "short": "Online scams & financial fraud",
+      "example": "I lost money in a UPI scam. Where should I report it?",
+      "keywords": [
+        "cyber",
+        "fraud",
+        "scam",
+        "upi",
+        "otp",
+        "phishing",
+        "hacked",
+        "online fraud",
+        "digital arrest",
+        "1930",
+        "bank account",
+        "money stolen",
+        "unauthorised transaction",
+        "unauthorized transaction"
+      ],
+      "title": "Report suspected financial cyber fraud promptly",
+      "intro": "If money was lost in an online scam, act promptly. Reporting gives the authorities a record; it does not guarantee recovery.",
+      "facts": [
+        {
+          "id": "cyber-report",
+          "text": "I4C advises reporting cyber fraud immediately by calling 1930 or using the National Cyber Crime Reporting Portal.",
+          "source": "cyber"
+        },
+        {
+          "id": "cyber-number",
+          "text": "The National Consumer Helpline also directs financial cyber fraud complaints to 1930.",
+          "source": "consumer"
+        }
+      ],
+      "steps": [
+        "Call 1930 and follow the reporting instructions, or visit cybercrime.gov.in.",
+        "As practical preparation, preserve transaction references, timestamps and messages. Do not send them to this chatbot.",
+        "Contact your bank through its official channel to report the transaction and ask about protecting your account."
+      ],
+      "caveat": "This guide cannot freeze a transfer, file a report, or promise that money will be recovered. Never share an OTP, PIN or password here.",
+      "link": {
+        "label": "Open cybercrime reporting portal",
+        "url": "https://cybercrime.gov.in/"
+      },
+      "followUps": [
+        "What should I keep ready before reporting cyber fraud?",
+        "Can I get free legal aid?"
+      ]
+    },
+    {
+      "id": "aid",
+      "name": "Free legal aid",
+      "icon": "hands",
+      "short": "Eligibility & finding assistance",
+      "example": "I cannot afford a lawyer. Can I get free legal aid?",
+      "keywords": [
+        "legal aid",
+        "lawyer",
+        "advocate",
+        "afford",
+        "free help",
+        "nalsa",
+        "dlsa",
+        "15100",
+        "eligibility",
+        "eligible",
+        "low income",
+        "legal assistance",
+        "legal advice"
+      ],
+      "title": "Explore free legal aid through NALSA",
+      "intro": "Legal Services Authorities can help eligible people with legal assistance. The relevant authority will assess your application and situation.",
+      "facts": [
+        {
+          "id": "aid-eligibility",
+          "text": "Eligibility categories include women, children, members of Scheduled Castes or Scheduled Tribes, people with disabilities, industrial workmen and people in custody. There are other categories too.",
+          "source": "aid"
+        },
+        {
+          "id": "aid-income",
+          "text": "Income-based eligibility depends on the applicable state rules and court. There is no single income threshold that works for every case across India.",
+          "source": "aid"
+        },
+        {
+          "id": "aid-access",
+          "text": "Call the national legal aid helpline 15100 or approach a Legal Services Authority. Applications can also be made on plain paper; legal aid clinics can assist.",
+          "source": "aidAccess"
+        }
+      ],
+      "steps": [
+        "Contact 15100 or the District Legal Services Authority at your district court.",
+        "Ask which eligibility category and supporting documents apply to you.",
+        "Prepare a short account of your issue, relevant dates and any notices for the authority."
+      ],
+      "caveat": "This is an introduction to applying, not an eligibility decision. Avoid posting identity documents or financial records in chat.",
+      "link": {
+        "label": "Read NALSA eligibility guidance",
+        "url": "https://nalsa.gov.in/faqs/"
+      },
+      "followUps": [
+        "Are women eligible regardless of income?",
+        "How do I apply for free legal aid?"
+      ]
+    },
+    {
+      "id": "women",
+      "name": "Support for women",
+      "icon": "heart",
+      "short": "Legal assistance & access to help",
+      "example": "Can a woman get free legal aid even if she earns an income?",
+      "keywords": [
+        "woman",
+        "women",
+        "wife",
+        "husband",
+        "domestic",
+        "abuse",
+        "harassment",
+        "posh",
+        "violence",
+        "dowry",
+        "financially independent"
+      ],
+      "title": "Free legal assistance for women",
+      "intro": "You can contact a Legal Services Authority to discuss your situation and understand the legal options that may apply.",
+      "facts": [
+        {
+          "id": "women-eligible",
+          "text": "NALSA states that a woman is eligible to apply for free legal aid irrespective of her income or financial status under Section 12(c) of the Legal Services Authorities Act, 1987.",
+          "source": "aid"
+        },
+        {
+          "id": "women-help",
+          "text": "NALSA lists district, state and taluk legal services institutions, legal aid clinics and the 15100 helpline as routes to assistance.",
+          "source": "women"
+        },
+        {
+          "id": "women-track",
+          "text": "After applying, retain the diary number provided to track your application and follow up with the relevant authority.",
+          "source": "women"
+        }
+      ],
+      "steps": [
+        "If you are in immediate danger, call 112 when it is safe to do so.",
+        "For legal assistance, contact 15100 or visit a District Legal Services Authority.",
+        "Ask a panel lawyer or paralegal volunteer for help with the application."
+      ],
+      "extraSources": [
+        "emergency"
+      ],
+      "caveat": "This guide does not assess a specific offence or choose a legal remedy for you. A legal aid lawyer can review your circumstances.",
+      "link": {
+        "label": "See NALSA assistance for women",
+        "url": "https://nalsa.gov.in/womens-assistance/"
+      },
+      "followUps": [
+        "How do I apply for free legal aid?",
+        "Where can I get urgent help?"
+      ]
+    },
+    {
+      "id": "rti",
+      "name": "Right to information",
+      "icon": "file",
+      "short": "Government records & RTI requests",
+      "example": "How do I file an RTI request for central government information?",
+      "keywords": [
+        "rti",
+        "right to information",
+        "government records",
+        "public authority",
+        "public information",
+        "information request",
+        "first appeal",
+        "cpio"
+      ],
+      "title": "Start an RTI request with the correct authority",
+      "intro": "The RTI Online portal provides a route to request information from the central public authorities listed on it.",
+      "facts": [
+        {
+          "id": "rti-jurisdiction",
+          "text": "This portal is for central government public authorities. State government requests, including NCT of Delhi requests, should not be filed through it.",
+          "source": "rti"
+        },
+        {
+          "id": "rti-fee",
+          "text": "The portal requires the prescribed application fee for non-BPL applicants. BPL applicants are exempt when they attach the required certificate.",
+          "source": "rti"
+        },
+        {
+          "id": "rti-track",
+          "text": "Keep your registration number to check status. The portal also provides a first-appeal option, for which its FAQ states there is no fee.",
+          "source": "rti"
+        }
+      ],
+      "steps": [
+        "Identify which public authority holds the records and whether it is central or state-level.",
+        "For a listed central authority, use Submit Request on the official RTI portal.",
+        "State the records you seek clearly and keep the registration details."
+      ],
+      "caveat": "This short guide does not cover exemptions, appeal deadlines or state-specific filing rules. Check the current official instructions before submitting.",
+      "link": {
+        "label": "Open RTI Online",
+        "url": "https://rtionline.gov.in/"
+      },
+      "followUps": [
+        "Can I use this RTI portal for a state government?",
+        "Is there a fee for a first RTI appeal?"
+      ]
+    },
+    {
+      "id": "equality",
+      "name": "Equality before the law",
+      "icon": "scale",
+      "short": "Equal protection · Article 14",
+      "example": "What does equality before the law mean?",
+      "keywords": [
+        "equality",
+        "equal protection",
+        "equal before",
+        "equal treatment",
+        "article 14",
+        "art 14"
+      ],
+      "articles": [
+        "14"
+      ],
+      "title": "Equality before the law in India",
+      "intro": "Here is an introduction based on the official Constitution of India.",
+      "facts": [
+        {
+          "id": "equality-protection",
+          "text": "Article 14 requires the State to give every person equality before the law and equal legal protection within India. Its wording covers persons, not only citizens.",
+          "source": "constitution-equality"
+        }
+      ],
+      "steps": [
+        "Open the official Constitution link and read the article alongside its qualifications.",
+        "For a specific dispute, ask a qualified lawyer or Legal Services Authority to review the facts."
+      ],
+      "extraSources": [
+        "aidAccess"
+      ],
+      "caveat": "This explains Article 14 at an introductory level. It does not determine whether a specific classification, reservation policy or act of discrimination is unconstitutional.",
+      "link": {
+        "label": "Read the official Constitution",
+        "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=37"
+      },
+      "followUps": [
+        "Does Article 14 apply only to citizens?",
+        "Can I get free legal aid?"
+      ]
+    },
+    {
+      "id": "liberty",
+      "name": "Life & personal liberty",
+      "icon": "heart",
+      "short": "Protection under Article 21",
+      "example": "What is the right to life and personal liberty?",
+      "keywords": [
+        "right to life",
+        "personal liberty",
+        "article 21",
+        "art 21"
+      ],
+      "articles": [
+        "21"
+      ],
+      "title": "Life & personal liberty in India",
+      "intro": "Here is an introduction based on the official Constitution of India.",
+      "facts": [
+        {
+          "id": "liberty-protection",
+          "text": "Article 21 protects every person’s life and personal liberty. The State can deprive a person of these only through a procedure established by law; the protection is not limited to citizens.",
+          "source": "constitution-liberty"
+        }
+      ],
+      "steps": [
+        "Open the official Constitution link and read the article alongside its qualifications.",
+        "For a specific dispute, ask a qualified lawyer or Legal Services Authority to review the facts."
+      ],
+      "extraSources": [
+        "aidAccess"
+      ],
+      "caveat": "This is the basic text of Article 21. The collection does not cover its full case-law interpretation, privacy disputes, arrest procedure or bail.",
+      "link": {
+        "label": "Read the official Constitution",
+        "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=42"
+      },
+      "followUps": [
+        "What does Article 21 protect?",
+        "Can I get free legal aid?"
+      ]
+    },
+    {
+      "id": "education",
+      "name": "Right to education",
+      "icon": "book",
+      "short": "Children aged 6–14 · Article 21A",
+      "example": "Which children have the right to free education?",
+      "keywords": [
+        "education",
+        "schooling",
+        "school education",
+        "article 21a",
+        "art 21a",
+        "free school"
+      ],
+      "articles": [
+        "21a"
+      ],
+      "title": "Right to education in India",
+      "intro": "Here is an introduction based on the official Constitution of India.",
+      "facts": [
+        {
+          "id": "education-age",
+          "text": "Article 21A requires the State to provide free, compulsory education for all children aged six to fourteen, in the manner determined by law.",
+          "source": "constitution-education"
+        }
+      ],
+      "steps": [
+        "Open the official Constitution link and read the article alongside its qualifications.",
+        "For a specific dispute, ask a qualified lawyer or Legal Services Authority to review the facts."
+      ],
+      "extraSources": [
+        "aidAccess"
+      ],
+      "caveat": "This covers the constitutional age range, not school admission procedures, fee reimbursement, private-school quotas or a guarantee of free education at every age.",
+      "link": {
+        "label": "Read the official Constitution",
+        "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=42"
+      },
+      "followUps": [
+        "What age group does Article 21A cover?",
+        "Can children apply for legal aid?"
+      ]
+    },
+    {
+      "id": "remedies",
+      "name": "Constitutional remedies",
+      "icon": "scale",
+      "short": "Enforcing fundamental rights · Article 32",
+      "example": "What is the right to constitutional remedies?",
+      "keywords": [
+        "constitutional remedies",
+        "constitutional remedy",
+        "enforce fundamental rights",
+        "enforcement of fundamental rights",
+        "article 32",
+        "art 32",
+        "writs"
+      ],
+      "articles": [
+        "32"
+      ],
+      "title": "Constitutional remedies in India",
+      "intro": "Here is an introduction based on the official Constitution of India.",
+      "facts": [
+        {
+          "id": "remedies-court",
+          "text": "Article 32 guarantees access to the Supreme Court through appropriate proceedings to enforce fundamental rights in Part III of the Constitution.",
+          "source": "constitution-remedies"
+        },
+        {
+          "id": "remedies-writs",
+          "text": "For that enforcement, Article 32 empowers the Supreme Court to issue directions, orders or writs. These include habeas corpus, mandamus, prohibition, quo warranto and certiorari, as appropriate.",
+          "source": "constitution-remedies"
+        }
+      ],
+      "steps": [
+        "Open the official Constitution link and read the article alongside its qualifications.",
+        "For a specific dispute, ask a qualified lawyer or Legal Services Authority to review the facts."
+      ],
+      "extraSources": [
+        "aidAccess"
+      ],
+      "caveat": "This does not promise that a petition will be admitted or succeed. Court selection, drafting, filing requirements and the remedy for your circumstances require individual legal advice.",
+      "link": {
+        "label": "Read the official Constitution",
+        "url": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=50"
+      },
+      "followUps": [
+        "What powers does Article 32 give the Supreme Court?",
+        "Can I get free legal aid?"
+      ]
+    },
+    {
+      "id": "emergency",
+      "name": "Urgent help",
+      "icon": "phone",
+      "short": "Immediate danger & emergencies",
+      "example": "I am in immediate danger. Where can I get urgent help?",
+      "keywords": [
+        "immediate danger",
+        "urgent help",
+        "emergency",
+        "112",
+        "attacking",
+        "threatening to kill",
+        "unsafe right now",
+        "being attacked",
+        "life is in danger"
+      ],
+      "title": "Your immediate safety comes first",
+      "intro": "If there is immediate danger, contact emergency services as soon as it is safe to do so. This chat cannot contact responders for you.",
+      "facts": [
+        {
+          "id": "emergency-call",
+          "text": "112 is India's unified emergency number for assistance with emergencies, including police, health and fire services.",
+          "source": "emergency"
+        }
+      ],
+      "steps": [
+        "Call 112 when safe, and tell the responder where you are and what is happening.",
+        "If possible, move to a safer place and seek help from someone you trust."
+      ],
+      "caveat": "Do not wait for a chatbot answer when urgent assistance is needed.",
+      "link": {
+        "label": "Call emergency services · 112",
+        "url": "tel:112"
+      },
+      "followUps": [
+        "How can I find free legal aid?"
+      ]
+    }
+  ]
+}

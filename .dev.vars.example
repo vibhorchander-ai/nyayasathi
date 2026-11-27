@@ -1,0 +1,5 @@
+# Copy to .dev.vars. The browser talks only to this app's server.
+NYAYA_BACKEND_URL=http://127.0.0.1:8000
+# Match NYAYA_API_TOKEN in backend/.env if you set one.
+NYAYA_BACKEND_TOKEN=
+# Put GROQ_API_KEY in backend/.env, NOT here or in browser-visible variables.
